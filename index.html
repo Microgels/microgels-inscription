@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscription — Formation Professionnelle Microgels</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: #f0f2f8;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 640px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(10,26,110,0.13);
+      animation: fadeUp 0.5s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: #0a1a6e;
+      padding: 2rem 2rem 1.75rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 160px; height: 160px;
+      background: #e8002d;
+      border-radius: 50%;
+      opacity: 0.22;
+    }
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: -50px; left: 25%;
+      width: 220px; height: 110px;
+      background: #f5a800;
+      opacity: 0.10;
+      border-radius: 50%;
+    }
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 1;
+    }
+    .logo-circle {
+      width: 48px; height: 48px;
+      background: white;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800; font-size: 20px;
+      color: #0a1a6e;
+      flex-shrink: 0;
+    }
+    .brand-name  { font-size: 13px; font-weight: 700; color: white; letter-spacing: 2px; text-transform: uppercase; }
+    .brand-tagline { font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 2px; }
+    .h-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800; font-size: 30px;
+      color: white; text-transform: uppercase;
+      line-height: 1; position: relative; z-index: 1;
+    }
+    .h-subtitle {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 22px;
+      color: #f5a800; text-transform: uppercase;
+      position: relative; z-index: 1;
+    }
+    .h-desc {
+      font-size: 13px; color: rgba(255,255,255,0.65);
+      margin-top: 6px; position: relative; z-index: 1;
+    }
+    .date-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #e8002d; color: white;
+      font-size: 13px; font-weight: 700;
+      padding: 7px 16px; border-radius: 20px;
+      margin-top: 14px; position: relative; z-index: 1;
+    }
+
+    /* ── BODY ── */
+    .body {
+      background: #ffffff;
+      padding: 2rem;
+    }
+
+    .section-title {
+      font-size: 11px; font-weight: 700;
+      color: #0a1a6e; letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding-bottom: 6px;
+      border-bottom: 2.5px solid #f5a800;
+      display: inline-block;
+      margin-bottom: 1rem;
+      margin-top: 1.5rem;
+    }
+    .section-title:first-of-type { margin-top: 0; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    .field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
+    .field:last-child { margin-bottom: 0; }
+
+    label.field-label {
+      font-size: 13px; font-weight: 600;
+      color: #444;
+    }
+    .req { color: #e8002d; }
+
+    input[type=text], input[type=email], input[type=tel],
+    select, textarea {
+      font-family: 'Nunito', sans-serif;
+      font-size: 14px;
+      padding: 10px 13px;
+      border: 1.5px solid #dde0ee;
+      border-radius: 8px;
+      background: #f8f9fd;
+      color: #1a1a2e;
+      outline: none;
+      width: 100%;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      appearance: none;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: #0a1a6e;
+      box-shadow: 0 0 0 3px rgba(10,26,110,0.1);
+      background: #fff;
+    }
+    select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%230a1a6e' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+    textarea { resize: vertical; min-height: 80px; }
+
+    /* Modules grid */
+    .modules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-bottom: 14px; }
+    .module-item {
+      display: flex; align-items: center; gap: 10px;
+      background: #f8f9fd;
+      border: 1.5px solid #dde0ee;
+      border-radius: 8px; padding: 10px 13px;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      user-select: none;
+    }
+    .module-item:hover { border-color: #0a1a6e; background: #eef0fb; }
+    .module-item input[type=checkbox] {
+      width: 16px; height: 16px;
+      accent-color: #0a1a6e;
+      flex-shrink: 0; cursor: pointer;
+      margin: 0; padding: 0;
+      border: none; background: none;
+    }
+    .mod-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+    .d-blue { background: #0a1a6e; }
+    .d-red  { background: #e8002d; }
+    .d-gold { background: #f5a800; }
+    .module-item span { font-size: 13px; font-weight: 600; color: #1a1a2e; line-height: 1.3; }
+
+    /* Radio row */
+    .radio-row { display: flex; gap: 9px; flex-wrap: wrap; }
+    .radio-item {
+      display: flex; align-items: center; gap: 7px;
+      background: #f8f9fd;
+      border: 1.5px solid #dde0ee;
+      border-radius: 8px; padding: 8px 14px;
+      cursor: pointer; font-size: 13px; font-weight: 600;
+      color: #1a1a2e;
+      transition: border-color 0.15s, background 0.15s;
+      user-select: none;
+    }
+    .radio-item:hover { border-color: #0a1a6e; background: #eef0fb; }
+    .radio-item input { accent-color: #0a1a6e; cursor: pointer; }
+
+    /* Submit */
+    .submit-btn {
+      width: 100%;
+      background: #0a1a6e;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 15px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 19px;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      cursor: pointer; margin-top: 1.75rem;
+      transition: background 0.15s, transform 0.1s;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .submit-btn:hover  { background: #e8002d; }
+    .submit-btn:active { transform: scale(0.98); }
+    .submit-btn:disabled { background: #aaa; cursor: not-allowed; }
+
+    /* Spinner */
+    .spinner {
+      width: 20px; height: 20px;
+      border: 3px solid rgba(255,255,255,0.4);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      display: none;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Info bar */
+    .info-bar {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: center;
+      background: #0a1a6e;
+      border-radius: 10px; padding: 11px 16px;
+      margin-top: 1.25rem;
+    }
+    .info-bar span {
+      font-size: 12px; color: rgba(255,255,255,0.75);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .info-bar strong { color: white; }
+
+    /* Error */
+    .error-msg {
+      font-size: 12px; color: #e8002d;
+      margin-top: 4px; display: none;
+    }
+    .field.has-error input,
+    .field.has-error select,
+    .field.has-error textarea {
+      border-color: #e8002d;
+    }
+    .field.has-error .error-msg { display: block; }
+
+    /* Success screen */
+    #success-screen {
+      display: none;
+      flex-direction: column; align-items: center; justify-content: center;
+      padding: 3rem 2rem; text-align: center;
+    }
+    .check-circle {
+      width: 72px; height: 72px;
+      background: #0a1a6e; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.25rem;
+      animation: pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+    }
+    @keyframes pop { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .check-circle svg { width: 36px; height: 36px; stroke: white; fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .success-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 28px; font-weight: 800;
+      color: #0a1a6e; text-transform: uppercase; margin-bottom: 8px;
+    }
+    .success-sub { font-size: 14px; color: #666; line-height: 1.6; }
+    .success-date-box {
+      margin-top: 1.5rem;
+      background: #f0f2f8; border-radius: 12px; padding: 1rem 2rem;
+    }
+    .success-date-label { font-size: 12px; color: #888; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+    .success-date-val {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 32px; font-weight: 800; color: #0a1a6e;
+    }
+    .success-date-note { font-size: 13px; color: #e8002d; font-weight: 600; }
+
+    @media (max-width: 520px) {
+      .grid-2, .modules-grid { grid-template-columns: 1fr; }
+      .body { padding: 1.5rem; }
+      .header { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo-row">
+      <div class="logo-circle">M</div>
+      <div>
+        <div class="brand-name">Microgels</div>
+        <div class="brand-tagline">Automatiser les tâches · Faciliter le travail</div>
+      </div>
+    </div>
+    <div class="h-title">Formation Professionnelle</div>
+    <div class="h-subtitle">et Pratique — Module Général</div>
+    <div class="h-desc">Infrastructure réseau · Administration · Supervision de sécurité</div>
+    <div class="date-badge">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Début : 15 juin 2026 &nbsp;·&nbsp; Durée : 1 mois &nbsp;·&nbsp; <strong>Inscription gratuite</strong>
+    </div>
+  </div>
+
+  <!-- FORM BODY -->
+  <div class="body">
+    <div id="form-screen">
+
+      <div class="section-title">Informations personnelles</div>
+
+      <div class="grid-2">
+        <div class="field" id="f-prenom">
+          <label class="field-label" for="prenom">Prénom <span class="req">*</span></label>
+          <input type="text" id="prenom" placeholder="Votre prénom">
+          <span class="error-msg">Champ obligatoire</span>
+        </div>
+        <div class="field" id="f-nom">
+          <label class="field-label" for="nom">Nom <span class="req">*</span></label>
+          <input type="text" id="nom" placeholder="Votre nom de famille">
+          <span class="error-msg">Champ obligatoire</span>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="field" id="f-email">
+          <label class="field-label" for="email">Adresse e-mail <span class="req">*</span></label>
+          <input type="email" id="email" placeholder="exemple@email.com">
+          <span class="error-msg">Adresse e-mail invalide</span>
+        </div>
+        <div class="field" id="f-phone">
+          <label class="field-label" for="phone">Téléphone <span class="req">*</span></label>
+          <input type="tel" id="phone" placeholder="+257 XX XX XX XX">
+          <span class="error-msg">Champ obligatoire</span>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="field" id="f-ville">
+          <label class="field-label" for="ville">Ville / Localité <span class="req">*</span></label>
+          <input type="text" id="ville" placeholder="Ex : Bujumbura">
+          <span class="error-msg">Champ obligatoire</span>
+        </div>
+        <div class="field">
+          <label class="field-label" for="age">Tranche d'âge</label>
+          <select id="age">
+            <option value="">— Sélectionner —</option>
+            <option>18 – 24 ans</option>
+            <option>25 – 34 ans</option>
+            <option>35 – 44 ans</option>
+            <option>45 ans et plus</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="section-title">Parcours professionnel</div>
+
+      <div class="field" id="f-niveau">
+        <label class="field-label" for="niveau">Niveau d'études <span class="req">*</span></label>
+        <select id="niveau">
+          <option value="">— Sélectionner —</option>
+          <option>Secondaire (A2/A3)</option>
+          <option>Technicien / BTS</option>
+          <option>Licence (Bac+3)</option>
+          <option>Master et plus</option>
+          <option>Autodidacte</option>
+        </select>
+        <span class="error-msg">Champ obligatoire</span>
+      </div>
+
+      <div class="field" id="f-occupation">
+        <label class="field-label" for="occupation">Situation actuelle <span class="req">*</span></label>
+        <select id="occupation">
+          <option value="">— Sélectionner —</option>
+          <option>Étudiant(e)</option>
+          <option>En emploi (salarié)</option>
+          <option>Technicien indépendant / Freelance</option>
+          <option>En recherche d'emploi</option>
+          <option>Entrepreneur / Chef d'entreprise</option>
+          <option>Autre</option>
+        </select>
+        <span class="error-msg">Champ obligatoire</span>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="experience">Expérience en réseaux &amp; informatique</label>
+        <select id="experience">
+          <option value="">— Sélectionner —</option>
+          <option>Aucune (débutant complet)</option>
+          <option>Bases (quelques notions)</option>
+          <option>Intermédiaire (1 – 2 ans)</option>
+          <option>Avancé (3 ans et plus)</option>
+        </select>
+      </div>
+
+      <div class="section-title">Modules souhaités</div>
+      <p style="font-size:13px;color:#666;margin-bottom:10px;">Sélectionnez les modules qui vous intéressent :</p>
+
+      <div class="modules-grid">
+        <label class="module-item"><input type="checkbox" value="Câblage réseau structuré" checked><div class="mod-dot d-blue"></div><span>Câblage réseau structuré</span></label>
+        <label class="module-item"><input type="checkbox" value="Hotspot & Mikhmon" checked><div class="mod-dot d-red"></div><span>Hotspot &amp; Mikhmon</span></label>
+        <label class="module-item"><input type="checkbox" value="Switch Aruba – VLANs" checked><div class="mod-dot d-blue"></div><span>Switch Aruba – VLANs</span></label>
+        <label class="module-item"><input type="checkbox" value="Starlink & APs WiFi" checked><div class="mod-dot d-gold"></div><span>Starlink &amp; APs WiFi</span></label>
+        <label class="module-item"><input type="checkbox" value="Routeur MikroTik" checked><div class="mod-dot d-blue"></div><span>Routeur MikroTik</span></label>
+        <label class="module-item"><input type="checkbox" value="Supervision Wazuh" checked><div class="mod-dot d-red"></div><span>Supervision Wazuh</span></label>
+      </div>
+
+      <div class="section-title">Objectifs &amp; motivation</div>
+
+      <div class="field">
+        <label class="field-label" for="objectif">Pourquoi souhaitez-vous suivre cette formation ?</label>
+        <textarea id="objectif" placeholder="Décrivez brièvement vos objectifs et motivations…"></textarea>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Comment avez-vous entendu parler de cette formation ?</label>
+        <div class="radio-row">
+          <label class="radio-item"><input type="radio" name="source" value="Réseaux sociaux"> Réseaux sociaux</label>
+          <label class="radio-item"><input type="radio" name="source" value="Bouche à oreille"> Bouche à oreille</label>
+          <label class="radio-item"><input type="radio" name="source" value="Affiche / Flyer"> Affiche / Flyer</label>
+          <label class="radio-item"><input type="radio" name="source" value="Site web"> Site web</label>
+          <label class="radio-item"><input type="radio" name="source" value="Autre"> Autre</label>
+        </div>
+      </div>
+
+      <button class="submit-btn" id="submit-btn" onclick="submitForm()">
+        <div class="spinner" id="spinner"></div>
+        <span id="btn-text">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="vertical-align:-3px;margin-right:6px"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Confirmer mon inscription
+        </span>
+      </button>
+
+      <div class="info-bar">
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <strong>Microgels</strong> · Bujumbura
+        </span>
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          +257 62 87 04 55
+        </span>
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+          microgells.com
+        </span>
+      </div>
+
+    </div><!-- /form-screen -->
+
+    <!-- SUCCESS SCREEN -->
+    <div id="success-screen">
+      <div class="check-circle">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="success-title">Inscription confirmée !</div>
+      <div class="success-sub">
+        Merci pour votre inscription à la formation Microgels.<br>
+        Vous serez contacté(e) prochainement au numéro ou e-mail fourni.
+      </div>
+      <div class="success-date-box">
+        <div class="success-date-label">Début de la formation</div>
+        <div class="success-date-val">15 Juin 2026</div>
+        <div class="success-date-note">Les places sont limitées — à très bientôt !</div>
+      </div>
+    </div>
+
+  </div><!-- /body -->
+</div><!-- /card -->
+
+<script>
+  // ─────────────────────────────────────────────────────────────────
+  //  COLLE ICI L'URL DE TON GOOGLE APPS SCRIPT (voir instructions)
+  // ─────────────────────────────────────────────────────────────────
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzaNkOqmreyJIVGuulC93oxXgVjY6Ybfw5UY2bhvoHjLsMHxnjwIpgnXmA2Sb41VTon5A/exec";
+
+  function validate() {
+    let ok = true;
+    const required = [
+      { id: 'prenom',     field: 'f-prenom' },
+      { id: 'nom',        field: 'f-nom' },
+      { id: 'phone',      field: 'f-phone' },
+      { id: 'ville',      field: 'f-ville' },
+      { id: 'niveau',     field: 'f-niveau' },
+      { id: 'occupation', field: 'f-occupation' },
+    ];
+    required.forEach(({ id, field }) => {
+      const el = document.getElementById(id);
+      const wrap = document.getElementById(field);
+      if (!el.value.trim()) {
+        wrap.classList.add('has-error');
+        ok = false;
+      } else {
+        wrap.classList.remove('has-error');
+      }
+    });
+    // Email validation
+    const emailEl = document.getElementById('email');
+    const emailWrap = document.getElementById('f-email');
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim());
+    if (!emailOk) {
+      emailWrap.classList.add('has-error');
+      ok = false;
+    } else {
+      emailWrap.classList.remove('has-error');
+    }
+    return ok;
+  }
+
+  async function submitForm() {
+    if (!validate()) return;
+    if (SCRIPT_URL === "COLLE_TON_URL_ICI") {
+      alert("⚠️ Configure d'abord l'URL du Google Apps Script dans le fichier HTML (variable SCRIPT_URL).");
+      return;
+    }
+
+    const btn = document.getElementById('submit-btn');
+    const spinner = document.getElementById('spinner');
+    const btnText = document.getElementById('btn-text');
+    btn.disabled = true;
+    spinner.style.display = 'block';
+    btnText.style.display = 'none';
+
+    const modules = [...document.querySelectorAll('.modules-grid input[type=checkbox]:checked')]
+                      .map(cb => cb.value).join(', ');
+    const source = document.querySelector('input[name=source]:checked');
+
+    const data = {
+      prenom:     document.getElementById('prenom').value.trim(),
+      nom:        document.getElementById('nom').value.trim(),
+      email:      document.getElementById('email').value.trim(),
+      phone:      document.getElementById('phone').value.trim(),
+      ville:      document.getElementById('ville').value.trim(),
+      age:        document.getElementById('age').value,
+      niveau:     document.getElementById('niveau').value,
+      occupation: document.getElementById('occupation').value,
+      experience: document.getElementById('experience').value,
+      modules:    modules,
+      objectif:   document.getElementById('objectif').value.trim(),
+      source:     source ? source.value : '',
+      date:       new Date().toLocaleString('fr-FR')
+    };
+
+    try {
+      const params = new URLSearchParams(data);
+      await fetch(SCRIPT_URL + '?' + params.toString(), {
+        method: 'GET',
+        mode: 'no-cors'
+      });
+      document.getElementById('form-screen').style.display = 'none';
+      const s = document.getElementById('success-screen');
+      s.style.display = 'flex';
+    } catch (err) {
+      alert("Une erreur est survenue. Veuillez réessayer ou contacter Microgels.");
+      btn.disabled = false;
+      spinner.style.display = 'none';
+      btnText.style.display = 'flex';
+    }
+  }
+</script>
+</body>
+</html>
